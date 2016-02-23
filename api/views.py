@@ -126,9 +126,12 @@ class PhotoDetailView(APIView):
         """delete the image record from the database and remove it from the folder too"""
         media_route = 'static/media/'
         image = UserPhoto.objects.get(id=request.query_params['id'])
-        media_route += str(image.image)
-        os.remove(media_route)
         image.delete()
+        try:
+            media_route += str(image.image)
+            os.remove(media_route)
+        except Exception, e:
+            pass                
         # delete it only if it has been removed from the folder
         return Response(status=status.HTTP_204_NO_CONTENT)
 
