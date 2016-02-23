@@ -1,0 +1,40 @@
+<div class="row" ng-hide="hideOtherView">
+    <div class="col-sm-12">
+        <form id="text-position">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="image_text" placeholder="image text" required>
+            </div>
+            <div class="form-group">
+                <ul class="list-group" >
+                    <h5> Image Position</h5>
+                    <li class="btn-group btn-group-sm col-sm-12">
+                        <div class="row">
+                        <a class="btn btn-default col-sm-4" ng-click="position = 'topleft'">top left</a>
+                        <a class="btn btn-default col-sm-4" ng-click="position = 'top'">top</a>
+                        <a class="btn btn-default col-sm-4" ng-click="position = 'topright'">top right</a>
+                        </div>
+                    </li>
+                    <li class="btn-group btn-group-sm col-sm-12">
+                        <div class="row">
+                        <a class="btn btn-default col-sm-4" ng-click="position = 'left'">left</a>
+                        <a class="btn btn-default col-sm-4" ng-click="position = 'center'">center</a>
+                        <a class="btn btn-default col-sm-4" ng-click="position = 'right'">right</a>
+                        </div>
+                    </li>
+                    <li class="btn-group btn-group-sm col-sm-12">
+                        <div class="row">
+                        <a class="btn btn-default col-sm-4" ng-click="position = 'bottomleft'">bottom left</a>
+                        <a class="btn btn-default col-sm-4" ng-click="position = 'bottom'">bottom</a>
+                        <a class="btn btn-default col-sm-4" ng-click="position = 'bottomright'">bottom right</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-default" 
+            ng-click="drawText(displayImage, image_text, position)">
+            	Apply
+            </button>
+        </form>
+    </div>
+</div>

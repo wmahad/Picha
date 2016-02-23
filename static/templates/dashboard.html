@@ -1,0 +1,147 @@
+<nav class="navbar navbar-default row">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="dashboard">Picha</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse" >
+            <ul class=" nav navbar-nav navbar-right">
+                <li>
+                    <img class="img-responsive img-rounded" src="http://graph.facebook.com/{{user_id}}/picture?width=40&height=40">
+                </li>
+                <li class="dropdown" ng-controller="FacebookController">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ username }} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="logout">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div class="container-fluid" id="main-section">
+    <div class="row" >
+        <div class="col-md-2 col-sm-2 col-xs-2" id="left-column">
+            <div class="row" >
+                <div class="col-sm-12">
+                    <form name="myForm" id="add-image">
+                        <div class="thumbnail">
+                            <div id="image-upload" ngf-drop ngf-resize="{width: 715, height: 498}" ngf-select ng-model="picFile" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true" accept="image/*" ngf-pattern="'image/*'" required ngf-model-invalid="errorFiles">
+                                <img ngf-thumbnail="picFile" ng-show="picFile">
+                                <h6 ng-show="!myForm.$valid">Drop images here or <a href="#">click to upload</a></h6>
+                            </div>
+                            <div class="progress" ng-show="picFile.progress >= 0">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="{{picFile.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{picFile.progress}} + '%';">
+                                    {{picFile.progress + '%'}}
+                                </div>
+                            </div>
+                            <p>
+                                <button class="btn btn-primary" ng-disabled="!myForm.$valid" ng-click="uploadPic(picFile)">
+                                    <i class="glyphicon glyphicon-upload"></i>
+                                </button>
+                                <button class="btn btn-default" ng-click="picFile = imageUrl " ng-disabled="!myForm.$valid">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row" id="gallery">
+                <div class="col-md-12 col-sm-12 col-xs-12"><a class="btn btn-default" data-toggle="modal" data-target="#myModal">Upload from gallery</a></div>
+            </div>
+            <div id="user-image" ng-show="showThumbnail" class="row image_gallery">
+                <div class="col-sm-12" >
+                    <div class="thumbnail">
+                        <a ng-click="clickToEdit(imageToEditUrl)"><img ng-src="{{imageToEditUrl}}"></a>
+                        <button class="btn btn-primary" role="button" ng-click="deleteImage(imageToEditId)">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+            <div ui-view="navBarView"></div>
+            <!-- Image View template -->            
+            <div class="panel panel-default" id="canvas">  
+                <i class="fa fa-spinner fa-pulse fa-5x"  ng-show="showSpinnner"></i>                             
+                <img accept="image/*" ngf-pattern="'image/*'" ng-src="{{displayImage}}">                
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                	<div ng-hide="hideOtherView" ui-view autoscroll="false"></div> 
+                    <div class="row"  ng-init="selectedColor=0; selectedContrast=0; selectedBrightness=0; selectedSharpness=0" id="enhancements" ng-hide="activateEnhancements">
+                        <div class="panel-heading"><h4 class="panel-title">Enhancements</h4></div>
+                        <div class="col-sm-12" >
+                            <h5>Color</h5>
+                            <form>
+                                <div>
+                                    <input type="range" min="-10" max="10" step="2" ng-model="selectedColor"><p>{{selectedColor}}</p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-12" >
+                            <h5>Contrast</h5> 
+                            <form>
+                                <div>
+                                    <input type="range" min="-10" max="10" step="2" ng-model="selectedContrast"><p>{{selectedContrast}}</p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-12" >
+                            <h5>Brightness</h5> 
+                            <form>
+                                <div>
+                                    <input type="range" min="-10" max="10" step="2" ng-model="selectedBrightness"><p>{{selectedBrightness}}</p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-12" >
+                            <h5>Sharpness</h5> 
+                            <form>
+                                <div>
+                                    <input type="range" min="-10" max="10" step="2" ng-model="selectedSharpness"><p>{{selectedSharpness}}</p>
+                                    <a class="btn btn-default" 
+                                    ng-click="applyEnhancements(displayImage, selectedColor, selectedContrast, selectedBrightness, selectedSharpness)">Apply</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Gallery</h4>
+            </div>
+            <div class="modal-body">
+                <div id="user-image" class="row">
+                    <div class="col-sm-4" ng-repeat="userImage in userImages">
+                        <div class="thumbnail">
+                            <a data-dismiss="modal" ng-click="setImageToEdit(userImage.image, userImage.id)"><img ng-src="{{userImage.image}}"></a>
+                            <!-- <a ui-sref="imageEffects({id:userImage.id})" id="effects-link">effects</a> -->
+                            <button data-dismiss="modal" class="btn btn-primary" role="button" ng-click="deleteImage(userImage.id)">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div style="text-align:center" ng-if="userImages.length === 0">There are currently no images, please upload</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

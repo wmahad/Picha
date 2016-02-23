@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default row">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="dashboard">Picha</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class=" nav navbar-nav navbar-right">
+                <li>
+                    <img class="img-responsive img-rounded" src="http://graph.facebook.com/{{user_id}}/picture?width=40&height=40">
+                </li>
+                <li class="dropdown" ng-controller="FacebookController">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ username }} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="logout">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="thumbnail" id="effect-panel">
+                <img ng-src="{{showOriginalImage}}">
+            </div>
+        </div>
+        <div class="col-sm-8" id="effect-display">
+            <div class="thumbnail">
+                <img ng-src="{{displayImageEffect}}">
+            </div>
+        </div>
+    </div>
+    <div class="row" id="user-image">
+        <div class="col-sm-3" ng-repeat="image in EffectImages">
+            <div class="thumbnail">
+                <a ng-click=""><img ng-src="{{image.effect}}"></a>
+            </div>
+        </div>
+    </div>
+</div>
