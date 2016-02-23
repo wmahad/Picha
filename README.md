@@ -1,6 +1,6 @@
-# Picha a Django photo editing application.
+# Picha a Django photo editing application. [![Build Status](https://travis-ci.org/andela-engmkwalusimbi/Picha.svg?branch=develop)](https://travis-ci.org/andela-engmkwalusimbi/Picha) [![Coverage Status](https://coveralls.io/repos/github/andela-engmkwalusimbi/Picha/badge.svg?branch=develop)](https://coveralls.io/github/andela-engmkwalusimbi/Picha?branch=develop)
 
-Picha is an application created by Django and AngularJs, it allows a user upload a photo and apply effects, rotate, filters and write text on the photo. A user can then share the image to his facebook wall or save the new image with effects. View the [live demo]()  of the application.
+Picha is an application created by Django and AngularJs, it allows a user upload a photo and apply effects, rotate, filters and write text on the photo. A user can then share the image to his facebook wall or save the new image with effects. View the [live demo](https://pichaa.herokuapp.com/)  of the application.
 
 ###Installation
 1. ######Requirements

@@ -1,0 +1,1 @@
+web: gunicorn picha.wsgi --log-file -
