@@ -161,7 +161,7 @@ def apply_filters(request):
         imageUrl = request.query_params['image_url']
         file_name = imageUrl.rsplit('/', 1)[-1]
         file_ = cStringIO.StringIO(urllib.urlopen(imageUrl).read())
-        import ipdb; ipdb.set_trace()
+        
         data = {
             'BLUR': image_effects.blur_filter(file_, file_name),
             'CONTOUR': image_effects.contour_filter(file_, file_name),
@@ -173,6 +173,7 @@ def apply_filters(request):
             'BAW': image_effects.black_n_white_filter(file_, file_name),
             'SHARPEN': image_effects.sharpen_filter(file_, file_name)
         }
+
         return Response(data, status=status.HTTP_200_OK)
 
 
