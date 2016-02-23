@@ -1,5 +1,4 @@
-
-# Picha a photo editing application.
+# Picha a Django photo editing application.
 
 Picha is an application created by Django and AngularJs, it allows a user upload a photo and apply effects, rotate, filters and write text on the photo. A user can then share the image to his facebook wall or save the new image with effects. View the [live demo]()  of the application.
 
@@ -77,3 +76,6 @@ To run tests type the following command in terminal:
 ```
 $ python manage.py test
 ```
+
+
+
