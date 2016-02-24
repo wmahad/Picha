@@ -71,7 +71,6 @@ class PhotoListView(generics.ListCreateAPIView):
         user = self.request.user
         return UserPhoto.objects.all().filter(created_by=user)
 
-
 class PhotoDetailView(APIView):
     """The view set for handling photo display"""
 
@@ -90,9 +89,7 @@ class PhotoDetailView(APIView):
         try:
             media_route += str(image.image)
             os.remove(media_route)
-        except Exception, e:
-            print("Error: file not found: {0}".format(e))                
-
+            print("Error: file not found: {0}".format(e))    
         # delete it only if it has been removed from the folder
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -122,9 +119,9 @@ def apply_filters(request):
     if request.method == 'GET':
         temp_url = 'static/media/temp/'        
 
-        imageUrl = request.query_params['image_url']
-        file_name = imageUrl.rsplit('/', 1)[-1]
-        file_ = cStringIO.StringIO(urllib.urlopen(imageUrl).read())
+        image_url = request.query_params['image_url']
+        file_name = image_url.rsplit('/', 1)[-1]
+        file_ = cStringIO.StringIO(urllib.urlopen(image_url).read())
         
         data = {
             'BLUR': image_effects.blur_filter(file_, file_name),
