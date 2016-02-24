@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^reset/', views.reset_effects , name='reset'),
     url(r'^image/', views.get_uploaded_image , name='image'),
     url(r'^enhancement/', views.apply_enhancement , name='enhancement'),
-    url(r'^imageeffects/', views.EffectListView.as_view() , name='imageeffects'),
+    # url(r'^imageeffects/', views.EffectListView.as_view() , name='imageeffects'),
     url(r'^logout/', 'django.contrib.auth.views.logout' , name='logout'),
 ]
 

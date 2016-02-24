@@ -1,12 +1,12 @@
 ##Project Plan for Picha photo editor
 
-#####Project Title: Picha
+**Project Title** : Picha
 
-#####Start Date: Wednesday, Feb 3rd, 2016
+**Start Date** : Wednesday, Feb 3rd, 2016
 
-#####End Date: Saturday,  Feb 21st, 2016
+**End Date** : Saturday,  Feb 21st, 2016
 
-######Application Overview
+#####Application Overview
 Picha is a swahili word meaning picture. Picha is an application that lets users upload an image and apply filters, draw text and do more with the image. After applying effects, users can share on facebook or save the effects.
 
 Picha is built on top of the following tools :
@@ -19,7 +19,7 @@ Picha is built on top of the following tools :
 + [Facebook Javascript SDK](https://developers.facebook.com/docs/javascript) &nbsp;- Facebook SDK for JavaScript for integrating client-side Facebook functionality into your web apps.
 
 
-######Tasks and Deliverables
+#####Tasks and Deliverables
 
 
 | Task Name  | Points |

@@ -253,8 +253,9 @@ body {
     position: absolute;
 }
 
-#filter-image h4 {
+#panel h4 {
     padding-left: 15px;
+    overflow-y: fixed;
 }
 
 #enhancements p {

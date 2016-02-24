@@ -117,6 +117,7 @@ class PhotoDetailTests(APITestCase):
 		response = self.client.get('/api/image/?name={}'.format(self.created_image.name))
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
 		self.assertEqual(response.data.get('name'), self.image_name)
+		
 		os.remove('static/media/' + str(self.created_image.image))
 		del self.created_image		
 
@@ -130,3 +131,12 @@ class PhotoDetailTests(APITestCase):
 		self.created_image.save()			
 		response = self.client.delete('/api/modify_photo/?id={}'.format(self.created_image.id))
 		self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+	def test_image_reset(self):
+		"""tests whether images get reset"""
+		response = self.client.get(reverse('reset'))
+		self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+
+
+

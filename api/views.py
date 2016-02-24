@@ -1,4 +1,5 @@
-import urllib, cStringIO
+import urllib
+import cStringIO
 import os
 
 from django.contrib.auth.models import User
@@ -71,47 +72,6 @@ class PhotoListView(generics.ListCreateAPIView):
         return UserPhoto.objects.all().filter(created_by=user)
 
 
-class EffectListView(APIView):
-    """The view set for photoeffect creation and upload"""
-    # Setting permission classes
-    permission_classes = (IsAuthenticatedOrCreate, permissions.IsAuthenticated)
-
-    def post(self, request):
-        """Method for handling the actual creation and upload"""
-        url = request.data['effect']
-        photo_id = request.data['photo_id']
-        # get the domain and the path to the image
-        domain, path = utilities.split_url(url)
-        # get file name of the image
-        filename = utilities.get_url_tail(path)
-        # get cString object
-        fobject = utilities.retrieve_image(url)
-        # Open the image using pill
-        pil_image = Image.open(fobject)
-        # get file name extension
-        ext = utilities.get_extension(filename)
-        # convert image to what django understands
-        image = utilities.pil_to_django(pil_image, ext)
-        user_photo = UserPhoto.objects.get(id=photo_id)
-        image_model = EffectsModel()
-        image_model.photo_id = user_photo.id
-        image_model.effect.save(filename, image)
-        # Save the image and return a response of 201
-        image_model.save()
-        return Response(status=status.HTTP_201_CREATED)
-
-
-    def get(self, request):
-        """Modify query to display photos with efects for a particular id"""
-        _id = request.query_params['id']
-        effectsobject = EffectsModel.objects.all()
-        if _id is not None:
-            effectsobject = effectsobject.filter(photo=_id)
-        # serialize returned data
-        serializer = EffectSerializer(effectsobject, context={'request': request}, many=True)
-        return Response(serializer.data)
-
-
 class PhotoDetailView(APIView):
     """The view set for handling photo display"""
 
@@ -160,10 +120,12 @@ def apply_filters(request):
     """view handles setting of filters on the image"""
     if request.method == 'GET':
         temp_url = 'static/media/temp/'        
-
+        
         image_url = request.query_params['image_url']
         file_name = image_url.rsplit('/', 1)[-1]
-        file_ = cStringIO.StringIO(urllib.urlopen(image_url).read())
+        
+        file_ = cStringIO.StringIO(urllib.urlopen(image_url).read() )      
+        
         
         data = {
             'BLUR': image_effects.blur_filter(file_, file_name),
@@ -235,6 +197,7 @@ def apply_rotations(request):
         degree = int(request.query_params['x'])
 
         file_name = image_url.rsplit('/', 1)[-1]
+
         file_ = cStringIO.StringIO(urllib.urlopen(image_url).read())
 
         new_image_url = temp_url + "Degree" + file_name
@@ -309,4 +272,42 @@ def draw_text(request):
         
         return Response({"image_text": new_image_url}, status=status.HTTP_200_OK)
 
+#class EffectListView(APIView):
+#     """The view set for photoeffect creation and upload"""
+#     # Setting permission classes
+#     permission_classes = (IsAuthenticatedOrCreate, permissions.IsAuthenticated)
 
+#     def post(self, request):
+#         """Method for handling the actual creation and upload"""
+#         url = request.data['effect']
+#         photo_id = request.data['photo_id']
+#         # get the domain and the path to the image
+#         domain, path = utilities.split_url(url)
+#         # get file name of the image
+#         filename = utilities.get_url_tail(path)
+#         # get cString object
+#         fobject = utilities.retrieve_image(url)
+#         # Open the image using pill
+#         pil_image = Image.open(fobject)
+#         # get file name extension
+#         ext = utilities.get_extension(filename)
+#         # convert image to what django understands
+#         image = utilities.pil_to_django(pil_image, ext)
+#         user_photo = UserPhoto.objects.get(id=photo_id)
+#         image_model = EffectsModel()
+#         image_model.photo_id = user_photo.id
+#         image_model.effect.save(filename, image)
+#         # Save the image and return a response of 201
+#         image_model.save()
+#         return Response(status=status.HTTP_201_CREATED)
+
+
+#     def get(self, request):
+#         """Modify query to display photos with efects for a particular id"""
+#         _id = request.query_params['id']
+#         effectsobject = EffectsModel.objects.all()
+#         if _id is not None:
+#             effectsobject = effectsobject.filter(photo=_id)
+#         # serialize returned data
+#         serializer = EffectSerializer(effectsobject, context={'request': request}, many=True)
+#         return Response(serializer.data)

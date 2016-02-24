@@ -1,5 +1,6 @@
-<div class="row" id="filter-image" ng-hide="hideOtherView">
-	<div class="panel-heading"><h4 class="panel-title">Filters</h4></div>
+<div class="row"  ng-hide="hideOtherView">
+    <div class="panel-heading" id="panel"><h4 class="panel-title">Filters</h4></div>
+<div id="filter-image">
     <div class="col-sm-12 right-panel" >
         <p>BLUR</p>
         <a ng-click="applyFilter(imageFilter.BLUR)" class="thumbnail">
@@ -54,5 +55,6 @@
             <img ng-src="{{imageFilter.SHARPEN}}" >
         </a>
     </div>
+</div>
 </div>
 

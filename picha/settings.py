@@ -135,3 +135,11 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('FACEBOOK_KEY')
 SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('FACEBOOK_SECRET')
+
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Tell nose to measure coverage on the 'foo' and 'bar' apps
+NOSE_ARGS = [
+    '--with-coverage',
+]
