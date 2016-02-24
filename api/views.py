@@ -120,12 +120,10 @@ def apply_filters(request):
     """view handles setting of filters on the image"""
     if request.method == 'GET':
         temp_url = 'static/media/temp/'        
-        
-        image_url = request.query_params['image_url']
-        file_name = image_url.rsplit('/', 1)[-1]
-        
-        file_ = cStringIO.StringIO(urllib.urlopen(image_url).read() )      
-        
+
+        imageUrl = request.query_params['image_url']
+        file_name = imageUrl.rsplit('/', 1)[-1]
+        file_ = cStringIO.StringIO(urllib.urlopen(imageUrl).read())
         
         data = {
             'BLUR': image_effects.blur_filter(file_, file_name),
