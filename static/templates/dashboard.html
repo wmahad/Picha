@@ -82,7 +82,7 @@
                             <h5>Color</h5>
                             <form>
                                 <div>
-                                    <input type="range" min="-10" max="10" step="2" ng-model="selectedColor"><p>{{selectedColor}}</p>
+                                    <input type="range" min="0" max="10" step="1" ng-model="selectedColor"><p>{{selectedColor}}</p>
                                 </div>
                             </form>
                         </div>
@@ -90,7 +90,7 @@
                             <h5>Contrast</h5> 
                             <form>
                                 <div>
-                                    <input type="range" min="-10" max="10" step="2" ng-model="selectedContrast"><p>{{selectedContrast}}</p>
+                                    <input type="range" min="0" max="10" step="1" ng-model="selectedContrast"><p>{{selectedContrast}}</p>
                                 </div>
                             </form>
                         </div>
@@ -98,7 +98,7 @@
                             <h5>Brightness</h5> 
                             <form>
                                 <div>
-                                    <input type="range" min="-10" max="10" step="2" ng-model="selectedBrightness"><p>{{selectedBrightness}}</p>
+                                    <input type="range" min="0" max="10" step="1" ng-model="selectedBrightness"><p>{{selectedBrightness}}</p>
                                 </div>
                             </form>
                         </div>
@@ -106,7 +106,7 @@
                             <h5>Sharpness</h5> 
                             <form>
                                 <div>
-                                    <input type="range" min="-10" max="10" step="2" ng-model="selectedSharpness"><p>{{selectedSharpness}}</p>
+                                    <input type="range" min="0" max="10" step="1" ng-model="selectedSharpness"><p>{{selectedSharpness}}</p>
                                     <a class="btn btn-default" 
                                     ng-click="applyEnhancements(displayImage, selectedColor, selectedContrast, selectedBrightness, selectedSharpness)">Apply</a>
                                 </div>

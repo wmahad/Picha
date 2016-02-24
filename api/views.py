@@ -89,6 +89,7 @@ class PhotoDetailView(APIView):
         try:
             media_route += str(image.image)
             os.remove(media_route)
+        except:
             print("Error: file not found: {0}".format(e))    
         # delete it only if it has been removed from the folder
         return Response(status=status.HTTP_204_NO_CONTENT)
@@ -168,7 +169,7 @@ def apply_enhancement(request):
             enhancer = ImageEnhance.Contrast(image.convert('RGB'))
             image = enhancer.enhance(contrast / 2.0)
         
-        if brightness != 0:
+        if brightness > 0:
             # when brightness is not zero enhancement the image
             enhancer = ImageEnhance.Brightness(image.convert('RGB'))
             image = enhancer.enhance(brightness / 2.0)
