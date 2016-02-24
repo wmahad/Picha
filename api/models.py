@@ -6,8 +6,8 @@ def generate_upload_path(self, filename):
 	"""Method to generate new image name and path to where it will be stored
 				it takes in a file name and returns path"""
 	filename, ext = os.path.splitext(filename.lower())
-	filename = "IMG_{}{}".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"), ext)
-	return 'effects/{}'.format(filename)
+	filename = "IMG_{0}{1}".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S"), ext)
+	return 'effects/{0}'.format(filename)
 
 class UserPhoto(models.Model):
 	"""docstring for UserPhotos Model

@@ -104,8 +104,6 @@ app.controller("DashboardCtrl", function($location, $state, $rootScope, $scope, 
                 .then(function(response) {
                     $rootScope.displayImage = response.enhance;
                     $rootScope.showSpinnner = false;
-                    $rootScope.activateEnhancements = true;
-                    $rootScope.hideOtherView = false;
                 })
                 .catch(function(error) {
                     $rootScope.showSpinnner = false;

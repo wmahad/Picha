@@ -25,6 +25,7 @@ class UserPhotoTests(APITestCase):
 	Tests to do with user registration and login
 	"""
 	def setUp(self):
+		"""Set up user photo specific data"""
 		self.username = fake.user_name()
 		self.password = fake.password()
 
@@ -78,6 +79,7 @@ class PhotoDetailTests(APITestCase):
 	Tests for a single photo
 	"""
 	def setUp(self):
+		"""Create photo specific variables for testing a single photo"""
 		self.username = fake.user_name()
 		self.password = fake.password()
 		self.image_name = 'test.png'

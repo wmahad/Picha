@@ -16,7 +16,7 @@ from social.exceptions import AuthAlreadyAssociated
 from api.serializers import PhotoSerializer, ImageSerializer, EffectSerializer
 from api.models import UserPhoto, EffectsModel
 from api.permissions import IsAuthenticatedOrCreate
-from api.utilities import *
+from api import utilities
 from api import image_effects
 
 from PIL import Image, ImageEnhance, ImageDraw, ImageFont     
@@ -81,23 +81,23 @@ class EffectListView(APIView):
         url = request.data['effect']
         photo_id = request.data['photo_id']
         # get the domain and the path to the image
-        domain, path = split_url(url)
+        domain, path = utilities.split_url(url)
         # get file name of the image
-        filename = get_url_tail(path)
+        filename = utilities.get_url_tail(path)
         # get cString object
-        fobject = retrieve_image(url)
+        fobject = utilities.retrieve_image(url)
         # Open the image using pill
         pil_image = Image.open(fobject)
         # get file name extension
-        ext = get_extension(filename)
+        ext = utilities.get_extension(filename)
         # convert image to what django understands
-        image = pil_to_django(pil_image, ext)
-        userPhoto = UserPhoto.objects.get(id=photo_id)
-        imageSave = EffectsModel()
-        imageSave.photo_id = userPhoto.id
-        imageSave.effect.save(filename, image)
+        image = utilities.pil_to_django(pil_image, ext)
+        user_photo = UserPhoto.objects.get(id=photo_id)
+        image_model = EffectsModel()
+        image_model.photo_id = user_photo.id
+        image_model.effect.save(filename, image)
         # Save the image and return a response of 201
-        imageSave.save()
+        image_model.save()
         return Response(status=status.HTTP_201_CREATED)
 
 
@@ -131,7 +131,7 @@ class PhotoDetailView(APIView):
             media_route += str(image.image)
             os.remove(media_route)
         except Exception, e:
-            pass                
+            print("Error: file not found: {0}".format(e))                
         # delete it only if it has been removed from the folder
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -139,8 +139,8 @@ class PhotoDetailView(APIView):
 def get_uploaded_image(request):
     """retrieve an uploaded image basing on its name"""
     if request.method == 'GET':
-        imageObject = UserPhoto.objects.get(name=request.query_params['name'])
-        serializer = ImageSerializer(imageObject, context={'request': request})
+        image_object = UserPhoto.objects.get(name=request.query_params['name'])
+        serializer = ImageSerializer(image_object, context={'request': request})
         return Response(serializer.data)
         
 @api_view(['GET'])
@@ -149,9 +149,9 @@ def reset_effects(request):
     if request.method == 'GET':
         temp_url = 'static/media/temp/'
         # read all files in a folder and delete them
-        fileList = os.listdir(temp_url)
-        for fileName in fileList:
-            os.remove(temp_url+"/"+fileName)
+        file_list = os.listdir(temp_url)
+        for file_name in file_list:
+            os.remove(temp_url+"/"+file_name)
         
         return Response(status=status.HTTP_200_OK)
 
@@ -161,9 +161,9 @@ def apply_filters(request):
     if request.method == 'GET':
         temp_url = 'static/media/temp/'        
 
-        imageUrl = request.query_params['image_url']
-        file_name = imageUrl.rsplit('/', 1)[-1]
-        file_ = cStringIO.StringIO(urllib.urlopen(imageUrl).read())
+        image_url = request.query_params['image_url']
+        file_name = image_url.rsplit('/', 1)[-1]
+        file_ = cStringIO.StringIO(urllib.urlopen(image_url).read())
         
         data = {
             'BLUR': image_effects.blur_filter(file_, file_name),
@@ -186,14 +186,14 @@ def apply_enhancement(request):
     if request.method == 'GET':
         temp_url = 'static/media/temp/'
 
-        imageUrl = request.query_params['image']
+        image_url = request.query_params['image']
         color = int(request.query_params['x'])
         contrast = int(request.query_params['y'])
         sharpness = int(request.query_params['w'])
         brightness = int(request.query_params['z'])
 
-        file_name = imageUrl.rsplit('/', 1)[-1]
-        file_ = cStringIO.StringIO(urllib.urlopen(imageUrl).read())
+        file_name = image_url.rsplit('/', 1)[-1]
+        file_ = cStringIO.StringIO(urllib.urlopen(image_url).read())
 
         new_image_url = temp_url + "Enhance" + file_name
 
@@ -231,11 +231,11 @@ def apply_rotations(request):
     if request.method == 'GET':
         temp_url = 'static/media/temp/'
 
-        imageUrl = request.query_params['image']
+        image_url = request.query_params['image']
         degree = int(request.query_params['x'])
 
-        file_name = imageUrl.rsplit('/', 1)[-1]
-        file_ = cStringIO.StringIO(urllib.urlopen(imageUrl).read())
+        file_name = image_url.rsplit('/', 1)[-1]
+        file_ = cStringIO.StringIO(urllib.urlopen(image_url).read())
 
         new_image_url = temp_url + "Degree" + file_name
 
@@ -263,12 +263,12 @@ def draw_text(request):
     if request.method == 'GET':
         temp_url = 'static/media/temp/'
 
-        imageUrl = request.query_params['image']
+        image_url = request.query_params['image']
         text = request.query_params['text']
         position = request.query_params['position']
 
-        file_name = imageUrl.rsplit('/', 1)[-1]
-        file_ = cStringIO.StringIO(urllib.urlopen(imageUrl).read())
+        file_name = image_url.rsplit('/', 1)[-1]
+        file_ = cStringIO.StringIO(urllib.urlopen(image_url).read())
 
         new_image_url = temp_url + "text" + file_name
 
