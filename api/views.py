@@ -92,6 +92,7 @@ class PhotoDetailView(APIView):
             os.remove(media_route)
         except Exception, e:
             print("Error: file not found: {0}".format(e))                
+
         # delete it only if it has been removed from the folder
         return Response(status=status.HTTP_204_NO_CONTENT)
 
