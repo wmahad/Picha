@@ -1,0 +1,349 @@
+body {
+    overflow: hidden;
+}
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
+}
+
+.site-wrapper {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #5C97FF;
+}
+
+.site-wrapper .row {
+    background: url('../img/background.jpg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+    opacity: 0.3;
+    height: inherit;
+    color: white;
+}
+
+.site-wrapper .homepage {
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    color: #fff;
+    margin-left: -150px;
+    opacity: none;
+}
+
+.site-wrapper h1 {
+    font-size: 5.4em;
+    margin: 0px auto;
+    text-shadow: 0 1px 0 white, 0 -1px 0 white, 1px 0 0 white, -1px 0 0 white;
+    color: white;
+}
+
+#inspiration {
+    font-family: 'cursive, sans-serif';
+    font-size: 1.7em;
+    font-style: italic;
+    margin: 20px;
+}
+
+.site-wrapper button {
+    margin: 20px auto;
+    font-size: 1.4em;
+    background: #1565c0;
+    border-color: #1565c0;
+    color: white;
+}
+#main-section {
+    background-color: #f8f8f8;
+    padding-top: 20px;
+}
+
+
+.site-wrapper .btn.focus, .site-wrapper .btn:focus {
+    background: #0d47a1;
+    border-color: #1565c0;
+    color: white;
+}
+
+.site-wrapper button:hover{
+    background: #0d47a1;
+    border-color: #1565c0;
+    color: white;
+}
+
+.panel-body {
+    padding-top: 0;
+}
+
+.panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    margin-bottom: 5px;
+}
+
+#add-image .thumbnail {
+    background: #e0e0e0;
+}
+
+#image-upload {
+    width: 100%;
+    height: 140px;
+    padding: 5px;
+    position: relative;
+}
+
+#add-image .thumbnail img {
+    /*margin: 0 5px;*/
+    width: 100%;
+    object-fit: contain;
+    height: inherit;
+}
+
+#add-image .thumbnail h6 {
+    color: #000;
+    position: absolute;
+    width: 100%;
+    right: 50px;
+    left: 5px;
+    top: 29%;
+}
+
+#add-image .thumbnail .progress {
+    position: absolute;
+    bottom: 35%;
+    width: 80%;
+    left: 20px;
+    height: 10px;
+    margin-bottom: 10px;
+}
+
+#add-image .thumbnail .progress-bar {
+    font-size: 10px;
+    line-height: 10px;
+    bottom: 5px;
+    height: inherit;
+    width: 100%;
+}
+
+#add-image .thumbnail p {
+    position: absolute;
+    left: 50%;
+    bottom: 15%;
+    margin-bottom: 0px;
+}
+
+#user-image {
+    height: 400px;
+    overflow-y: auto;
+}
+
+#user-image .thumbnail {
+    height: 160px;
+    padding: 5px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#user-image .thumbnail img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+#user-image .thumbnail button {
+    position: absolute;
+    left: 70%;
+    bottom: 5%;
+    margin-bottom: 0px;
+    background: #f8f8f8;
+    border: 0px;
+    color: #333;
+    opacity: .65;
+}
+
+/*For the link effects*/
+#user-image .thumbnail #effects-link {
+    position: absolute;
+    left: 10%;
+    bottom: 5%;
+    margin-bottom: 0px;
+    border: 0px;
+    color: white;
+    font-size: 16px;
+}
+
+/*#user-image .thumbnail #effects-link:hover {
+    color: #1565c0;
+}*/
+
+/*twitter color= #00AFF0*/
+.navbar>.container-fluid .navbar-brand {
+    margin-left: 15px;
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>a:hover {
+    color: white;
+}
+
+.nav li img {
+    margin-top: 7px;
+}
+
+.navbar {
+    margin-bottom: 0;
+    background-color: #003F72;
+    color: white;
+    border-radius: 0;
+}
+
+#image-actions {
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#canvas {
+    height: 500px;
+    background: #e0e0e0;
+}
+
+#canvas img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.right-panel {
+    height: 180px;
+    box-sizing: border-box;
+}
+
+.right-panel .thumbnail {
+    padding: 0px;
+    margin-bottom: 5px;
+}
+
+.right-panel img {
+    height: 170px;
+    width: 100%;
+    object-fit: cover;
+}
+
+#filter-image {
+    height: 550px;
+    overflow-y: auto;
+}
+
+#filter-image p {
+    margin: 5px;
+    font-weight: bold;
+    position: absolute;
+}
+
+#panel h4 {
+    padding-left: 15px;
+    overflow-y: fixed;
+}
+
+#enhancements p {
+    text-align: center;
+}
+
+#enhancements h4 {
+    padding-left: 15px;
+}
+
+#enhancements input[type="range"] {
+    width: 80%;
+    float: left;
+    border-radius: 10px;
+}
+
+#enhancements .btn, #enhancements .btn:hover{
+    background-color: #00AFF0;
+    border-color: #00AFF0;
+    color:white;
+}
+
+#text-position {
+    padding-top: 12px;
+}
+
+#text-position a {
+    font-size: 12px;
+    border-radius: 0px;
+}
+
+#text-position button, #text-position button:hover {
+    margin-top: 12px;
+    background-color: #00AFF0;
+    border-color: #00AFF0;
+    color:white;
+}
+
+#canvas .fa-spinner {
+    font-size: 7em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+    color: #03a9f4;
+}
+
+#gallery {
+    margin-bottom: 12px;
+}
+
+#gallery .btn, #gallery .btn:hover{    
+    background-color: #00AFF0;
+    border-color: #00AFF0;
+    color:white;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: white;
+    background-color: #003F72;
+}
+
+.image_gallery .thumbnail {
+    background-color: #e0e0e0;
+}
+
+/*effects css*/
+#effect-panel  {
+    height: 400px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+#effect-panel img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+#effect-display .thumbnail {
+    height: 400px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+#effect-display .thumbnail img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}

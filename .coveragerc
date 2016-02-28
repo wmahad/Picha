@@ -1,0 +1,12 @@
+[report]
+omit =
+    *virtualenv*
+    *envs*
+    *api/image_effects.py*
+    *api/utilities.py*
+    *api/migrations/*
+    */python?.?/*
+    *__init__*
+    */tests/*
+    *manage.py
+    *settings.py*
