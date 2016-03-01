@@ -7,6 +7,8 @@ app.controller("DashboardCtrl", function($location, $state, $rootScope, $scope, 
     $scope.username = $localStorage.currentUser;
     $scope.user_id = $localStorage.userid;
 
+    $('[data-toggle="tooltip"]').tooltip()
+    
     var url = $location.host(),
         protocol = $location.protocol(),
         port = $location.port();
@@ -75,6 +77,10 @@ app.controller("DashboardCtrl", function($location, $state, $rootScope, $scope, 
                 .$promise
                 .then(function(response) {
                     $rootScope.displayImage = $rootScope.originalImage;
+                    $scope.selectedColor = 0;
+                    $scope.selectedContrast = 0;
+                    $scope.selectedBrightness = 0;
+                    $scope.selectedSharpness = 0;
                     $rootScope.activateEnhancements = false;
                     $rootScope.hideOtherView = true;
                 });

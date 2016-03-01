@@ -4,27 +4,34 @@
         <a class="btn btn-default" ng-click='saveImage(displayImage, imageToEditId)'>
             save
         </a>
-        <a class="btn btn-default" ng-click='resetEffects()'>
-            <i class="zmdi zmdi-close zmdi-hc-1x"></i> reset
+        <a class="btn btn-default" ng-click='resetEffects()'
+        data-toggle="tooltip" data-placement="bottom" title="reset">
+            <i class="zmdi zmdi-close zmdi-hc-1x"></i>
         </a>
-        <a class="btn btn-default" ng-click='rotateImage(displayImage, 2)'>
-            <i class="zmdi zmdi-rotate-left zmdi-hc-1x"></i> rotate left
+        <a class="btn btn-default" ng-click='rotateImage(displayImage, 2)'
+        data-toggle="tooltip" data-placement="bottom" title="rotate left">
+            <i class="zmdi zmdi-rotate-left zmdi-hc-1x"></i> 
         </a>
-        <a class="btn btn-default" ng-click='rotateImage(displayImage, 1)'>
-            <i class="zmdi zmdi-rotate-right zmdi-hc-1x"></i> rotate right
+        <a class="btn btn-default" ng-click='rotateImage(displayImage, 1)'  
+        data-toggle="tooltip" data-placement="bottom" title="rotate right">
+            <i class="zmdi zmdi-rotate-right zmdi-hc-1x"></i>
         </a>
-        <a class="btn btn-default" ng-click='rotateImage(displayImage, 0)'>
-            <i class="zmdi zmdi-swap-vertical zmdi-hc-1x"></i> flip vertical
+        <a class="btn btn-default" ng-click='rotateImage(displayImage, 0)'
+        data-toggle="tooltip" data-placement="bottom" title="flip vertical">
+            <i class="zmdi zmdi-swap-vertical zmdi-hc-1x"></i>
         </a>
-        <a class="btn btn-default" ng-click='rotateImage(displayImage, 3)'>
-            <i class="zmdi zmdi-swap zmdi-hc-1x"></i> flip horizontal
+        <a class="btn btn-default" ng-click='rotateImage(displayImage, 3)'
+        data-toggle="tooltip" data-placement="bottom" title="flip horizontal">
+            <i class="zmdi zmdi-swap zmdi-hc-1x"></i>
         </a>
-        <div class="btn btn-default" ng-click="showFilters(displayImage)">
-            <i class="zmdi zmdi-filter-frames zmdi-hc-1x"></i> filters
+        <div class="btn btn-default" ng-click="showFilters(displayImage)" 
+        data-toggle="tooltip" data-placement="bottom" title="filters">
+            <i class="zmdi zmdi-filter-frames zmdi-hc-1x"></i>
         </div>
         <a ng-click='showTextBox()' class="btn btn-default">text</a>
-        <a class="btn btn-default" ng-click="SharePhoto(displayImage)">
-            <i class="zmdi zmdi-share zmdi-hc-1x"></i> share
+        <a class="btn btn-default" ng-click="SharePhoto(displayImage)"
+        data-toggle="tooltip" data-placement="bottom" title="share">
+            <i class="zmdi zmdi-share zmdi-hc-1x"></i>
         </a>
     </div>
 </div>

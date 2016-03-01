@@ -1,0 +1,117 @@
+/*css styles for screens lower than*/
+
+@media only screen and (max-width: 998px) {
+    #gallery .btn,
+    #gallery .btn:hover {
+        font-size: 11px;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+    #add-image .thumbnail p {
+        right: 20px;
+        bottom: 25px;
+    }
+    #image-actions .btn {
+        min-width: 40px;
+    }
+}
+
+
+/*css styles for media screens lower than 768px*/
+
+@media only screen and (max-width: 768px) {
+    body {
+        overflow: auto;
+    }
+    #main-section .col-sm-2 {
+        padding-right: 5px;
+    }
+    .nav {
+        float: right;
+    }
+    .navbar-nav {
+        margin: 0;
+    }
+    .navbar-nav>li {
+        float: left;
+    }
+    .navbar-nav>li>a {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .navbar-brand {
+        padding-left: 0;
+    }
+    #gallery .btn,
+    #gallery .btn:hover {
+        font-size: 11px;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+    #add-image .thumbnail p {
+        right: 20px;
+        bottom: 5px;
+    }
+    #image-actions .btn {
+        min-width: 20px;
+        font-size: 9px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+        overflow: auto;
+    }
+    #image-actions .btn {
+        min-width: 50px;
+        font-size: 13px;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+}
+
+
+/*css styles for media screens lower than 568px*/
+
+@media only screen and (max-width: 568px) {
+    body {
+        overflow: auto;
+    }
+    .nav {
+        float: right;
+    }
+    .navbar-nav {
+        margin: 0;
+    }
+    .navbar-nav>li {
+        float: left;
+    }
+    .navbar-nav>li>a {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .navbar-brand {
+        padding-left: 0;
+    }
+    #add-image .thumbnail p {
+        right: 20px;
+        bottom: 5px;
+    }
+    #image-actions .btn {
+        min-width: 35px;
+        font-size: 13px;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+    #user-image {
+    	height: 300px;
+    }
+    #user-image .thumbnail {
+        height: 280px;
+    }
+    #canvas i {
+    	z-index: 100;
+    }
+}

@@ -1,5 +1,6 @@
 body {
     overflow: hidden;
+    background: #f8f8f8;
 }
 
 [ng\:cloak],
@@ -64,19 +65,20 @@ body {
     border-color: #1565c0;
     color: white;
 }
+
 #main-section {
     background-color: #f8f8f8;
     padding-top: 20px;
 }
 
-
-.site-wrapper .btn.focus, .site-wrapper .btn:focus {
+.site-wrapper .btn.focus,
+.site-wrapper .btn:focus {
     background: #0d47a1;
     border-color: #1565c0;
     color: white;
 }
 
-.site-wrapper button:hover{
+.site-wrapper button:hover {
     background: #0d47a1;
     border-color: #1565c0;
     color: white;
@@ -139,8 +141,8 @@ body {
 
 #add-image .thumbnail p {
     position: absolute;
-    left: 50%;
-    bottom: 15%;
+    right: 20px;
+    bottom: 25px;
     margin-bottom: 0px;
 }
 
@@ -164,7 +166,7 @@ body {
 
 #user-image .thumbnail button {
     position: absolute;
-    left: 70%;
+    right: 10px;
     bottom: 5%;
     margin-bottom: 0px;
     background: #f8f8f8;
@@ -173,7 +175,9 @@ body {
     opacity: .65;
 }
 
+
 /*For the link effects*/
+
 #user-image .thumbnail #effects-link {
     position: absolute;
     left: 10%;
@@ -184,17 +188,21 @@ body {
     font-size: 16px;
 }
 
+
 /*#user-image .thumbnail #effects-link:hover {
     color: #1565c0;
 }*/
 
+
 /*twitter color= #00AFF0*/
+
 .navbar>.container-fluid .navbar-brand {
     margin-left: 15px;
     color: white;
 }
 
-.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>a:hover {
+.navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-nav>li>a:hover {
     color: white;
 }
 
@@ -213,6 +221,10 @@ body {
     margin-bottom: 15px;
     margin-left: auto;
     margin-right: auto;
+}
+
+#image-actions .btn {
+    min-width: 50px;
 }
 
 #canvas {
@@ -272,10 +284,11 @@ body {
     border-radius: 10px;
 }
 
-#enhancements .btn, #enhancements .btn:hover{
+#enhancements .btn,
+#enhancements .btn:hover {
     background-color: #00AFF0;
     border-color: #00AFF0;
-    color:white;
+    color: white;
 }
 
 #text-position {
@@ -287,11 +300,12 @@ body {
     border-radius: 0px;
 }
 
-#text-position button, #text-position button:hover {
+#text-position button,
+#text-position button:hover {
     margin-top: 12px;
     background-color: #00AFF0;
     border-color: #00AFF0;
-    color:white;
+    color: white;
 }
 
 #canvas .fa-spinner {
@@ -308,13 +322,17 @@ body {
     margin-bottom: 12px;
 }
 
-#gallery .btn, #gallery .btn:hover{    
+#gallery .btn,
+#gallery .btn:hover {
     background-color: #00AFF0;
     border-color: #00AFF0;
-    color:white;
+    width: inherit;
+    color: white;
 }
 
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
     color: white;
     background-color: #003F72;
 }
@@ -323,8 +341,10 @@ body {
     background-color: #e0e0e0;
 }
 
+
 /*effects css*/
-#effect-panel  {
+
+#effect-panel {
     height: 400px;
     padding: 5px;
     box-sizing: border-box;

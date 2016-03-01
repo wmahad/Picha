@@ -1,11 +1,11 @@
 <nav class="navbar navbar-default row">
-    <div class="container-fluid">
+    <div class="container-fluid col-sm-12">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
+        <div class="col-sm-6">
             <a class="navbar-brand" ui-sref="dashboard">Picha</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="navbar-collapse" >
+        <div class="col-sm-6">
             <ul class=" nav navbar-nav navbar-right">
                 <li>
                     <img class="img-responsive img-rounded" src="https://graph.facebook.com/{{user_id}}/picture?width=40&height=40">
@@ -23,9 +23,9 @@
     <!-- /.container-fluid -->
 </nav>
 <div class="container-fluid" id="main-section">
-    <div class="row" >
-        <div class="col-md-2 col-sm-2 col-xs-2" id="left-column">
-            <div class="row" >
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-12" id="left-column">
+            <div class="row">
                 <div class="col-sm-12">
                     <form name="myForm" id="add-image">
                         <div class="thumbnail">
@@ -54,7 +54,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12"><a class="btn btn-default" data-toggle="modal" data-target="#myModal">Upload from gallery</a></div>
             </div>
             <div id="user-image" ng-show="showThumbnail" class="row image_gallery">
-                <div class="col-sm-12" >
+                <div class="col-sm-12">
                     <div class="thumbnail">
                         <a ng-click="clickToEdit(imageToEditUrl)"><img ng-src="{{imageToEditUrl}}"></a>
                         <button class="btn btn-primary" role="button" ng-click="deleteImage(imageToEditId)">
@@ -64,51 +64,55 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-7 col-sm-7 col-xs-7">
+        <div class="col-md-7 col-sm-7 col-xs-12">
             <div ui-view="navBarView"></div>
-            <!-- Image View template -->            
-            <div class="panel panel-default" id="canvas">  
-                <i class="fa fa-spinner fa-pulse fa-5x"  ng-show="showSpinnner"></i>                             
-                <img accept="image/*" ngf-pattern="'image/*'" ng-src="{{displayImage}}">                
+            <!-- Image View template -->
+            <div class="panel panel-default" id="canvas">
+                <i class="fa fa-spinner fa-pulse fa-5x" ng-show="showSpinnner"></i>
+                <img accept="image/*" ngf-pattern="'image/*'" ng-src="{{displayImage}}">
             </div>
         </div>
-        <div class="col-md-3 col-sm-3 col-xs-3">
+        <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                	<div ng-hide="hideOtherView" ui-view autoscroll="false"></div> 
-                    <div class="row"  ng-init="selectedColor=0; selectedContrast=0; selectedBrightness=0; selectedSharpness=0" id="enhancements" ng-hide="activateEnhancements">
-                        <div class="panel-heading"><h4 class="panel-title">Enhancements</h4></div>
-                        <div class="col-sm-12" >
+                    <div ng-hide="hideOtherView" ui-view autoscroll="false"></div>
+                    <div class="row" ng-init="selectedColor=0; selectedContrast=0; selectedBrightness=0; selectedSharpness=0" id="enhancements" ng-hide="activateEnhancements">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Enhancements</h4></div>
+                        <div class="col-sm-12">
                             <h5>Color</h5>
                             <form>
                                 <div>
-                                    <input type="range" min="0" max="10" step="1" ng-model="selectedColor"><p>{{selectedColor}}</p>
+                                    <input type="range" min="0" max="10" step="1" ng-model="selectedColor">
+                                    <p>{{selectedColor}}</p>
                                 </div>
                             </form>
                         </div>
-                        <div class="col-sm-12" >
-                            <h5>Contrast</h5> 
+                        <div class="col-sm-12">
+                            <h5>Contrast</h5>
                             <form>
                                 <div>
-                                    <input type="range" min="0" max="10" step="1" ng-model="selectedContrast"><p>{{selectedContrast}}</p>
+                                    <input type="range" min="0" max="10" step="1" ng-model="selectedContrast">
+                                    <p>{{selectedContrast}}</p>
                                 </div>
                             </form>
                         </div>
-                        <div class="col-sm-12" >
-                            <h5>Brightness</h5> 
+                        <div class="col-sm-12">
+                            <h5>Brightness</h5>
                             <form>
                                 <div>
-                                    <input type="range" min="0" max="10" step="1" ng-model="selectedBrightness"><p>{{selectedBrightness}}</p>
+                                    <input type="range" min="0" max="10" step="1" ng-model="selectedBrightness">
+                                    <p>{{selectedBrightness}}</p>
                                 </div>
                             </form>
                         </div>
-                        <div class="col-sm-12" >
-                            <h5>Sharpness</h5> 
+                        <div class="col-sm-12">
+                            <h5>Sharpness</h5>
                             <form>
                                 <div>
-                                    <input type="range" min="0" max="10" step="1" ng-model="selectedSharpness"><p>{{selectedSharpness}}</p>
-                                    <a class="btn btn-default" 
-                                    ng-click="applyEnhancements(displayImage, selectedColor, selectedContrast, selectedBrightness, selectedSharpness)">Apply</a>
+                                    <input type="range" min="0" max="10" step="1" ng-model="selectedSharpness">
+                                    <p>{{selectedSharpness}}</p>
+                                    <a class="btn btn-default" ng-click="applyEnhancements(displayImage, selectedColor, selectedContrast, selectedBrightness, selectedSharpness)">Apply</a>
                                 </div>
                             </form>
                         </div>
@@ -118,7 +122,6 @@
         </div>
     </div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -144,4 +147,3 @@
         </div>
     </div>
 </div>
-
