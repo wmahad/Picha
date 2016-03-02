@@ -27,12 +27,14 @@ app.controller("DashboardCtrl", function($location, $state, $rootScope, $scope, 
             if (image.indexOf(url) === -1) {
                 image = url + image;
             }
+            $rootScope.showSpinnner = true;
             var data = {
                 effect: image,
                 photo_id: imageID
             };
             MainFactory.ImageEffect
                 .saveImageEffct(data, function(response) {
+                    $rootScope.showSpinnner = false;
                     $scope.resetEffects()
                 });
         }
@@ -43,9 +45,11 @@ app.controller("DashboardCtrl", function($location, $state, $rootScope, $scope, 
         $rootScope.showSpinnner = true;
         MainFactory.ModifyImage
             .DeleteImage({ id: imageID }, function(response) {
-                $rootScope.showSpinnner = false;
                 $rootScope.activateEnhancements = false;
                 $rootScope.hideOtherView = true;
+                $rootScope.displayImage = "static/img/media_white.png";
+                $rootScope.showThumbnail = false;
+                $rootScope.showSpinnner = false;
                 $scope.$emit('updateData');
             })
     };
